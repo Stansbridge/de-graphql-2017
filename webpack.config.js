@@ -1,4 +1,5 @@
 var path = require('path');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const output = path.resolve(__dirname, 'dist');
 module.exports = {
@@ -19,6 +20,9 @@ module.exports = {
       }
     }]
   },
+  plugins: [
+    new ExtractTextPlugin('notes.js')
+  ],
   devServer: {
     hot: true,
     inline: true,
