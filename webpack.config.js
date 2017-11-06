@@ -9,6 +9,13 @@ module.exports = {
   },
   module : {
     rules: [{
+      test: /\.js$/,
+      exclude: /node_modules|reveal\.js/,
+      loader: 'babel-loader',
+      options: {
+        presets: ['babel-preset-react', 'babel-preset-env']
+      }
+    }, {
       test: /\.css$/,
       use: [ 'style-loader', 'css-loader']
     }, {
@@ -17,6 +24,9 @@ module.exports = {
       options: {
         limit: 10000
       }
+    }, {
+      test: /\.flow$/,
+      loader: 'ignore-loader',
     }]
   },
   devServer: {
