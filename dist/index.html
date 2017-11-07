@@ -135,48 +135,273 @@ query MyQueryName ($idVariable: Int) {
               </ol>
             </aside>
           </section>
+          <section>
+            <h3>Mutating and Subscribing</h3>
+            <pre><code class="language-graphql">
+# Schema
+schema {
+  query: RootQueryType
+  mutation: RootMutationType
+  subscription: RootSubscriptionType
+}
+
+type RootMutationType {
+  updatePerson(
+    id: Int
+    person: PersonInput
+  ): Person
+}
+
+type RootSubscriptionType {
+  personChange: Person
+}
+
+# Person Input
+type PersonInput {
+  name: String
+}
+          </code></pre>
+            <pre><code class="language-graphql">
+
+# Query
+mutation UpdatePersonExample ($person: PersonInput, $id: Int) {
+  updatePerson(id: $id, person: $person) {
+    # updatePerson resolves to a Person type
+    id
+    name
+    friends {
+      name
+    }
+  }
+}
+
+subscribe {
+  personChange {
+    id
+    name
+  }
+}
+            </code></pre>
+            <aside class="notes">
+              <ol>
+                <li><strong>Input / Outputs</strong></li>
+                <li><strong>Mutations have side-effects</strong></li>
+                <li><strong>Mutations describe what will change</strong></li>
+                <li><strong>Subscriptions</strong></li>
+              </ol>
+            </aside>
+          </section>
         </section>
         <section>
           <section>
-            <h2>Where is GraphQL?</h2>
-            <p>WHERE TO USE IT</p>
+            <h2>GraphQL in the stack</h2>
+            <p>
+              Not a database, a data resolver
+            </p>
             <aside class="notes">
               <ol>
+                <li><strong>NOT A DATABASE</strong></li>
               </ol>
             </aside>
           </section>
           <section>
-            <h3>Architecturhishdasjldj</h3>
+            <h3>Where Does It Go?</h3>
+            <div>
+              <ol class="fragment">
+                <li>Transport (HTTP)</li>
+                <li>GraphQL Resolver Runtime</li>
+                <li>Business Logic</li>
+                <li>Data Store</li>
+              </ol>
+              <ol class="fragment">
+                <li>Transport (HTTP)</li>
+                <li>GraphQL Resolver Runtime</li>
+                <li>API (REST/RPC/XML)</li>
+                <li>Business Logic</li>
+                <li>Data Store</li>
+              </ol>
+            </div>
             <aside class="notes">
               <ol>
+                <li><strong>After Transport</strong></li>
+                <li><strong>After Before Business Logic</strong></li>
               </ol>
             </aside>
           </section>
           <section>
             <h3>Reference implementations</h3>
+            <div>
+              <h4>Server Libraries</h4>
+              <ul>
+                <li>C# / .NET</li>
+                <li>Clojure</li>
+                <li>Elixir</li>
+                <li>Erlang</li>
+                <li>Go</li>
+                <li>Groovy</li>
+                <li>Java</li>
+                <li>JavaScript</li>
+                <li>PHP</li>
+                <li>Python</li>
+                <li>Scala</li>
+                <li>Ruby</li>
+              </ul>
+            </div>
+            <div>
+              <h4>Client Libraries</h4>
+              <ul>
+                <li>C# / .NET</li>
+                <li>Go</li>
+                <li>Java/Android</li>
+                <li>JavaScript</li>
+                <li>Swift / Objective-C IOS</li>
+              </ul>
+            </div>
             <aside class="notes">
+              <ol>
+                <li><strong>Defined as a specification</strong></li>
+                <li><strong>GraphQL-js, Youshido's GraphQL</strong></li>
+              </ol>
             </aside>
           </section>
         </section>
         <section>
           <section>
             <h2>Why GraphQL?</h2>
-            <p>WHY</p>
+            <ul>
+              <li>Fast initial load</li>
+              <li>Minimal roundtrip requests</li>
+            </ul>
             <aside class="notes">
               <ol>
+                <li><strong>Covered: an idea of GraphQL's role in your stack</strong></li>
+                <li><strong>REST, SOAP</strong></li>
+                <li><strong>What is important in a modern app</strong></li>
+                <li><strong>Mobile phone: limited computing power</strong></li>
+                <li><strong>Mobile networks: limited connectivity</strong></li>
+                <li><strong>Best tool for the job</strong></li>
+                <li><strong>bytes down the wire... XML</strong></li>
               </ol>
             </aside>
           </section>
           <section>
-            <h3>Comparison</h3>
+            <h3>Comparison with REST</h3>
+            <pre><code>
+GET /attendees
+            </code></pre>
+            <pre><code class="language-json">
+[{
+  "id": 1,
+  "name": "Anthony",
+  "profileId": 23
+}]
+            </code></pre>
+            <pre><code class="language-graphql">
+query {
+  attendees {
+    id
+    name
+  }
+}
+            </code></pre>
+            <pre><code>
+                  GET /attendees?photoSize=100x100
+            </code></pre>
+            <pre><code class="language-json">
+            [{
+              "id": 1,
+              "name": "Anthony",
+              "profileId": 23,
+              "profile": {
+                "url": "profile/23",
+                "photo": "data:image/jpeg;base64,SGVsbG8sIFdvcmxkIQ%3D%3D"
+              }
+            }]
+            </code></pre>
+            <pre><code class="language-graphql">
+query {
+  attendees {
+    id
+    name
+    profile {
+      url
+      photo(size: "100x100")
+    }
+  }
+}
+            </code></pre>
+
+            <pre><code>
+GET /attendees?photoSize=100x100&withFriends=1
+            </code></pre>
+            <pre><code>
+GET /friends/1
+            </code></pre>
+            <pre><code>
+                  GET /friends/1?photoSize=100x100
+            </code></pre>
+            <pre><code class="language-json">
+[{
+  "id": 1,
+  "name": "Anthony",
+  "profileId": 23,
+  "profile": {
+    "url": "profile/23",
+    "photo": "data:image/jpeg;base64,SGVsbG8sIFdvcmxkIQ%3D%3D"
+  }
+}]
+            </code></pre>
+            <pre><code class="language-graphql">
+query {
+  attendees {
+    id
+    name
+    profile {
+      url
+      photo(size: "100x100")
+    }
+    friends {
+      id
+      name
+      profile {
+        url
+        photo(size: "100x100")
+      }
+    }
+  }
+}
+            </code></pre>
             <aside class="notes">
-              <ol>
-              </ol>
             </aside>
           </section>
           <section>
-            <h3>DevExp</h3>
+            <h3>UX -> DX</h3>
+            <pre><code class="language-json">
+{
+    "title": "Person",
+    "type": "object",
+    "properties": {
+        "name": {
+            "type": "string"
+        },
+    },
+    "required": ["name"]
+}
+            </code></pre>
+            <pre><code class="language-graphql">
+# Description of Person type
+type Person {
+  # Description of name field
+  name: String @deprecated(reason: "We will be splitting name into firstName and lastName fields.")
+  firstName: String
+  lastName: String
+}
+            </code></pre>
             <aside class="notes">
+                <li><strong>Users get all the love, what about us developers</strong></li>
+                <li><strong>Types: work with the schema as a tool</strong></li>
+                <li><strong>Types: use a tool to build the schema</strong></li>
+                <li><strong>Self documenting</strong></li>
             </aside>
           </section>
         </section>
