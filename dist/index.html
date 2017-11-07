@@ -438,6 +438,7 @@ type Person {
             <aside class="notes">
               <ol>
                 <li>what is dazzle</li>
+                <li>What convinced the "Solutions Architect" that graphql was a good solution: n+1 problem and clients shapping the data they need</li>
                 <li>talk about: what's in the api</li>
                 <li>
                   Example!: <a target="_blank" href='https://ffee7c23.ngrok.io/graphql?query=query%20%7B%0A%20%20room(id%3A%20"Um9vbTotNTAw")%20%7B%0A%09%09name%0A%20%20%20%20floor%0A%20%20%20%20%0A%20%20%20%20property%20%7B%0A%20%20%20%20%20%20name%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20customer%20%7B%0A%20%20%20%20%20%20%20%20name%0A%20%20%20%20%20%20%20%20serviceLevel%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%7D%0A%20%20%20%20%0A%20%20%20%20intent(name%3A%20"AMAZON.YesIntent"%2C%20vendor%3A%20ALEXA)%20%7B%0A%20%20%20%20%20%20response(slots%3A%20%5B%5D)%20%7B%0A%20%20%20%20%20%20%20%20content%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%7D%0A%20%20%7D%0A%7D&operationName=undefined'>
