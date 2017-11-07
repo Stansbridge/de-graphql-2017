@@ -26,58 +26,112 @@
               <li>A query language for your API</li>
               <li>A server-side runtime for executing queries</li>
             </ul>
-            <p>A front for your business logic</p>
             <aside class="notes">
               <ol>
                 <li><strong>When talking about GraphQL</strong> referring to two separate things</li>
-                <li><strong>Query</strong> a way of retrieving data or mutating (updating) data</li>
-                <li><strong>Runtime</strong> a way of resolving a query into data</li>
+                <li><strong>Query (Schema)</strong> a way of retrieving data</li>
+                <li><strong>Runtime (Schema, Resolver, Logic)</strong> a way of resolving a query into data</li>
               </ol>
             </aside>
           </section>
           <section>
             <h3>Schema</h3>
             <pre><code class="language-graphql">
-              type Customer {
-                id: Integer
-                name: String
-                orders: [Order]
-              }
+# A Person
+type Person {
+   id: Int
+   name: String
+   profile: Profile
+   friends: [Person]
+}
 
-              type Order {
-                id: Integer
-                product: Product
-              }
+# A Profile
+type Profile {
+   url: String
+   photo: String
+}
 
-              type Product {
-                id: Integer
-                price: Integer
-                description: String
-              }
+type RootQueryType {
+   attendees: [Person]
+   person(
+       # The id to look for
+       id: Int
+   ): Person
+}
+
+schema {
+   query: RootQueryType
+}
             </code></pre>
             <aside class="notes">
               <ol>
+                <li><strong>Type ANATOMY</strong></li>
+                <li><strong>Fields</strong> functionallity dependant data (3NF)</li>
+                <li><strong>Relationships</strong> friends</li>
+                <li><strong>Schema: Query, Mutate, Subscribe?</strong></li>
               </ol>
             </aside>
           </section>
           <section>
             <h3>Querying</h3>
             <pre><code class="language-graphql">
-              query {
-                customers {
-                  name
-                }
-              }
+type RootQueryType {
+   attendees: [Person]
+   person(
+       # The id to look for
+       id: Int
+   ): Person
+}
             </code></pre>
-            <div class="fragment">
-              <pre><code class="language-sql">
-                SELECT `example`.`foo`...
-              </code></pre>
-            </div>
+            <pre><code class="language-graphql">
+query {
+  attendees {
+    id
+    name
+    profile {
+      picture
+    }
+    friends {
+      name
+      profile {
+        picture
+      }
+    }
+  }
+}
+            </code></pre>
             <aside class="notes">
               <ol>
-                <li><strong>Like SQL for APIs?</strong></li>
-                <li><strong>Understanding of your entities and their relations</strong> You'll have a hard time writing anything if you don't</li>
+                <li><strong>Against the schema previous slide</strong></li>
+                <li><strong>Traversing the friendship graph</strong></li>
+                <li><strong>Single query, single page</strong></li>
+              </ol>
+            </aside>
+          </section>
+          <section>
+            <h3>Querying With Variables</h3>
+            <pre><code class="language-graphql">
+type RootQueryType {
+   attendees: [Person]
+   person(
+       # The id to look for
+       id: Int
+   ): Person
+}
+            </code></pre>
+            <pre><code class="language-graphql">
+query MyQueryName ($idVariable: Int) {
+  person(id: $idVariable) {
+    profile {
+      url
+    }
+  }
+}
+            </code></pre>
+            <aside class="notes">
+              <ol>
+                <li><strong>Against the schema previous slide</strong></li>
+                <li><strong>Typed, Predictable</strong></li>
               </ol>
             </aside>
           </section>
