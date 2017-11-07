@@ -36,7 +36,32 @@
             </aside>
           </section>
           <section>
-            <h2>Querying</h2>
+            <h3>Schema</h3>
+            <pre><code class="language-graphql">
+              type Customer {
+                id: Integer
+                name: String
+                orders: [Order]
+              }
+
+              type Order {
+                id: Integer
+                product: Product
+              }
+
+              type Product {
+                id: Integer
+                price: Integer
+                description: String
+              }
+            </code></pre>
+            <aside class="notes">
+              <ol>
+              </ol>
+            </aside>
+          </section>
+          <section>
+            <h3>Querying</h3>
             <pre><code class="language-graphql">
               query {
                 customers {
@@ -56,61 +81,81 @@
               </ol>
             </aside>
           </section>
+        </section>
+        <section>
           <section>
-            <h2>Resolving</h2>
-            <pre><code class="language-sql">
-              SELECT `example`.`foo`...
-            </code></pre>
-            <pre><code class="language-graphql">
-              query {
-                example {
-                  foo
-                }
-              }
-            </code></pre>
+            <h2>Where is GraphQL?</h2>
+            <p>WHERE TO USE IT</p>
             <aside class="notes">
               <ol>
-                <li><strong>Previous examples</strong></li>
-                <li><strong>Think about SQL</strong> Parse, optimise and execute against the data on disk</li>
-                <li><strong>Think about GraphQL</strong> Parse, optimise and execute against resolvers in your code</li>
               </ol>
+            </aside>
+          </section>
+          <section>
+            <h3>Architecturhishdasjldj</h3>
+            <aside class="notes">
+              <ol>
+              </ol>
+            </aside>
+          </section>
+          <section>
+            <h3>Reference implementations</h3>
+            <aside class="notes">
             </aside>
           </section>
         </section>
         <section>
-          <h2>Your business is a graph</h2>
-          <div class="fragment">
-            <div class="fragment fade-out">
-              <pre><code class="language-graphql">
-                type Customer {
-                  id: Integer
-                  name: String
-                  orders: [Order]
-                }
-
-                type Order {
-                  id: Integer
-                  product: Product
-                }
-
-                type Product {
-                  id: Integer
-                  price: Integer
-                  description: String
-                }
-              </code></pre>
-            </div>
-          </div>
+          <section>
+            <h2>Why GraphQL?</h2>
+            <p>WHY</p>
+            <aside class="notes">
+              <ol>
+              </ol>
+            </aside>
+          </section>
+          <section>
+            <h3>Comparison</h3>
+            <aside class="notes">
+              <ol>
+              </ol>
+            </aside>
+          </section>
+          <section>
+            <h3>DevExp</h3>
+            <aside class="notes">
+            </aside>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h3>HOW?</h3>
+            <p>How</p>
+            <aside class="notes">
+              <ol>
+              </ol>
+            </aside>
+          </section>
+          <section>
+            <h3>New projects</h3>
+            <aside class="notes">
+              <ol>
+              </ol>
+            </aside>
+          </section>
+          <section>
+            <h3>Existing projects</h3>
+            <aside class="notes">
+            </aside>
+          </section>
+        </section>
+        <section>
+          <h1>Fin</h1>
           <aside class="notes">
-            <ol>
-              <li><strong>Think of your data as a series of nodes</strong> a node defines: <strong>functionally dependant</strong> fields of data</li>
-              <li><strong>Your nodes have edges (relations)</strong> edges define a link between one node and another</li>
-              <li><strong>Normalization rules help</strong></li>
-            </ol>
           </aside>
         </section>
       </div>
     </div>
+
     <script src="main.bundle.js"></script>
     <script src="notes.js"></script>
   </body>
