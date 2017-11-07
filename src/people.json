@@ -1,0 +1,468 @@
+{
+  "0": {
+    "profile": {
+      "picture": "https://secure.meetupstatic.com/photos/member/d/4/d/c/thumb_137634492.jpeg",
+      "url": "https://www.meetup.com/digital-east/members/105378092/"
+    },
+    "name": "Robert Preus-MacL­aren",
+    "id": 0,
+    "friends": []
+  },
+  "1": {
+    "profile": {
+      "picture": "https://secure.meetupstatic.com/photos/member/4/7/6/a/thumb_219078282.jpeg",
+      "url": "https://www.meetup.com/digital-east/members/161160282/"
+    },
+    "name": "Emily-Jayn­e Crittenden­",
+    "id": 1,
+    "friends": [
+      25,
+      16,
+      11,
+      15,
+      7
+    ]
+  },
+  "2": {
+    "profile": {
+      "picture": "https://secure.meetupstatic.com/s/img/458386242735519287330/noPhoto_50.png",
+      "url": "https://www.meetup.com/digital-east/members/79443942/"
+    },
+    "name": "Joe Strachan",
+    "id": 2,
+    "friends": [
+      10,
+      26,
+      11,
+      5,
+      1,
+      14,
+      22
+    ]
+  },
+  "3": {
+    "profile": {
+      "picture": "https://secure.meetupstatic.com/photos/member/5/5/2/e/thumb_260361806.jpeg",
+      "url": "https://www.meetup.com/digital-east/members/184806481/"
+    },
+    "name": "Adrian Pickering",
+    "id": 3,
+    "friends": [
+      7,
+      16,
+      24,
+      8
+    ]
+  },
+  "4": {
+    "profile": {
+      "picture": "https://secure.meetupstatic.com/photos/member/c/4/0/6/thumb_83810182.jpeg",
+      "url": "https://www.meetup.com/digital-east/members/69820262/"
+    },
+    "name": "Chris Yallop",
+    "id": 4,
+    "friends": [
+      22,
+      23
+    ]
+  },
+  "5": {
+    "profile": {
+      "picture": "https://secure.meetupstatic.com/s/img/458386242735519287330/noPhoto_50.png",
+      "url": "https://www.meetup.com/digital-east/members/116715402/"
+    },
+    "name": "Katja Mordaunt",
+    "id": 5,
+    "friends": []
+  },
+  "6": {
+    "profile": {
+      "picture": "https://secure.meetupstatic.com/s/img/458386242735519287330/noPhoto_50.png",
+      "url": "https://www.meetup.com/digital-east/members/212544219/"
+    },
+    "name": "Steph",
+    "id": 6,
+    "friends": [
+      2,
+      24,
+      13,
+      18,
+      1,
+      7,
+      3,
+      5,
+      19,
+      9
+    ]
+  },
+  "7": {
+    "profile": {
+      "picture": "https://secure.meetupstatic.com/photos/member/d/f/0/4/thumb_254217092.jpeg",
+      "url": "https://www.meetup.com/digital-east/members/200418615/"
+    },
+    "name": "Jamie Pearcey",
+    "id": 7,
+    "friends": [
+      23,
+      5,
+      0,
+      2,
+      6,
+      10,
+      21
+    ]
+  },
+  "8": {
+    "profile": {
+      "picture": "https://secure.meetupstatic.com/photos/member/5/c/5/6/thumb_260543638.jpeg",
+      "url": "https://www.meetup.com/digital-east/members/213865742/"
+    },
+    "name": "Claire Riseboroug­h +1",
+    "id": 8,
+    "friends": []
+  },
+  "9": {
+    "profile": {
+      "picture": "https://secure.meetupstatic.com/photos/member/8/9/6/a/thumb_256895178.jpeg",
+      "url": "https://www.meetup.com/digital-east/members/205907159/"
+    },
+    "name": "Shyam Rallapalli­",
+    "id": 9,
+    "friends": [
+      11,
+      21,
+      20,
+      12,
+      18,
+      0
+    ]
+  },
+  "10": {
+    "profile": {
+      "picture": "https://secure.meetupstatic.com/photos/member/6/d/b/c/thumb_161188092.jpeg",
+      "url": "https://www.meetup.com/digital-east/members/121670152/"
+    },
+    "name": "John Heaser",
+    "id": 10,
+    "friends": [
+      3,
+      14,
+      26,
+      16
+    ]
+  },
+  "11": {
+    "profile": {
+      "picture": "https://secure.meetupstatic.com/photos/member/d/9/f/0/thumb_135175792.jpeg",
+      "url": "https://www.meetup.com/digital-east/members/91208692/"
+    },
+    "name": "Stephen Gowen",
+    "id": 11,
+    "friends": [
+      24,
+      2
+    ]
+  },
+  "12": {
+    "profile": {
+      "picture": "https://secure.meetupstatic.com/photos/member/4/7/e/2/thumb_139038402.jpeg",
+      "url": "https://www.meetup.com/digital-east/members/106253472/"
+    },
+    "name": "Geoff Bones",
+    "id": 12,
+    "friends": [
+      16,
+      17,
+      1,
+      9,
+      6
+    ]
+  },
+  "13": {
+    "profile": {
+      "picture": "https://secure.meetupstatic.com/photos/member/9/4/c/2/thumb_91538082.jpeg",
+      "url": "https://www.meetup.com/digital-east/members/25130492/"
+    },
+    "name": "Mike Diplock",
+    "id": 13,
+    "friends": [
+      8,
+      16,
+      3,
+      24,
+      10,
+      6,
+      21,
+      7,
+      25,
+      23,
+      0
+    ]
+  },
+  "14": {
+    "profile": {
+      "picture": "https://secure.meetupstatic.com/photos/member/5/6/6/d/thumb_262042125.jpeg",
+      "url": "https://www.meetup.com/digital-east/members/217045173/"
+    },
+    "name": "Sam Regan",
+    "id": 14,
+    "friends": [
+      6,
+      13,
+      0,
+      16,
+      26,
+      19,
+      12,
+      15
+    ]
+  },
+  "15": {
+    "profile": {
+      "picture": "https://secure.meetupstatic.com/s/img/458386242735519287330/noPhoto_50.png",
+      "url": "https://www.meetup.com/digital-east/members/60045582/"
+    },
+    "name": "Matthew",
+    "id": 15,
+    "friends": [
+      4,
+      1,
+      6,
+      20,
+      24,
+      10,
+      0,
+      3,
+      2,
+      23,
+      19,
+      18,
+      25,
+      9,
+      12,
+      13,
+      5
+    ]
+  },
+  "16": {
+    "profile": {
+      "picture": "https://secure.meetupstatic.com/photos/member/4/1/f/f/thumb_255676895.jpeg",
+      "url": "https://www.meetup.com/digital-east/members/129598562/"
+    },
+    "name": "Dave Rant",
+    "id": 16,
+    "friends": [
+      14,
+      5,
+      8,
+      4,
+      15,
+      21,
+      3,
+      2,
+      26
+    ]
+  },
+  "17": {
+    "profile": {
+      "picture": "https://secure.meetupstatic.com/s/img/458386242735519287330/noPhoto_50.png",
+      "url": "https://www.meetup.com/digital-east/members/193586161/"
+    },
+    "name": "Alex Newark",
+    "id": 17,
+    "friends": [
+      2
+    ]
+  },
+  "18": {
+    "profile": {
+      "picture": "https://secure.meetupstatic.com/photos/member/1/9/4/8/thumb_176826472.jpeg",
+      "url": "https://www.meetup.com/digital-east/members/60435142/"
+    },
+    "name": "Martin Payne",
+    "id": 18,
+    "friends": [
+      19,
+      25,
+      26,
+      16,
+      4,
+      7,
+      5,
+      17,
+      0
+    ]
+  },
+  "19": {
+    "profile": {
+      "picture": "https://secure.meetupstatic.com/photos/member/a/8/5/4/thumb_79483092.jpeg",
+      "url": "https://www.meetup.com/digital-east/members/67743422/"
+    },
+    "name": "Paul Thornton",
+    "id": 19,
+    "friends": [
+      16,
+      21,
+      8,
+      11,
+      20,
+      0,
+      5,
+      23,
+      15,
+      4,
+      14
+    ]
+  },
+  "20": {
+    "profile": {
+      "picture": "https://secure.meetupstatic.com/photos/member/8/1/b/c/thumb_90033212.jpeg",
+      "url": "https://www.meetup.com/digital-east/members/75326122/"
+    },
+    "name": "Rupert Redington",
+    "id": 20,
+    "friends": [
+      5,
+      14,
+      12,
+      2,
+      10,
+      9,
+      11,
+      19,
+      26
+    ]
+  },
+  "21": {
+    "profile": {
+      "picture": "https://secure.meetupstatic.com/s/img/458386242735519287330/noPhoto_50.png",
+      "url": "https://www.meetup.com/digital-east/members/187354758/"
+    },
+    "name": "Anthony Stansbridg­e",
+    "id": 21,
+    "friends": [
+      13,
+      24,
+      23,
+      15,
+      25
+    ]
+  },
+  "22": {
+    "profile": {
+      "picture": "https://secure.meetupstatic.com/s/img/458386242735519287330/noPhoto_50.png",
+      "url": "https://www.meetup.com/digital-east/members/240587284/"
+    },
+    "name": "Steve Lee",
+    "id": 22,
+    "friends": [
+      11,
+      9,
+      20,
+      15,
+      14,
+      18
+    ]
+  },
+  "23": {
+    "profile": {
+      "picture": "https://secure.meetupstatic.com/photos/member/5/b/4/1/thumb_19403361.jpeg",
+      "url": "https://www.meetup.com/digital-east/members/20843401/"
+    },
+    "name": "Ashwini",
+    "id": 23,
+    "friends": [
+      7,
+      0,
+      24,
+      3,
+      2,
+      16,
+      8,
+      25,
+      22
+    ]
+  },
+  "24": {
+    "profile": {
+      "picture": "https://secure.meetupstatic.com/photos/member/e/7/b/e/thumb_263639326.jpeg",
+      "url": "https://www.meetup.com/digital-east/members/220607449/"
+    },
+    "name": "Rachel Lawson",
+    "id": 24,
+    "friends": [
+      7,
+      1,
+      21,
+      12,
+      18,
+      4,
+      19,
+      25,
+      14,
+      13
+    ]
+  },
+  "25": {
+    "profile": {
+      "picture": "https://secure.meetupstatic.com/photos/member/b/a/d/a/thumb_271847834.jpeg",
+      "url": "https://www.meetup.com/digital-east/members/144444282/"
+    },
+    "name": "William Corner",
+    "id": 25,
+    "friends": [
+      3,
+      17,
+      1,
+      20,
+      6,
+      24,
+      5,
+      10,
+      19,
+      16,
+      8
+    ]
+  },
+  "26": {
+    "profile": {
+      "picture": "https://secure.meetupstatic.com/s/img/458386242735519287330/noPhoto_50.png",
+      "url": "https://www.meetup.com/digital-east/members/227507198/"
+    },
+    "name": "Luke Meppem",
+    "id": 26,
+    "friends": [
+      13,
+      11,
+      19
+    ]
+  },
+  "27": {
+    "profile": {
+      "picture": "https://secure.meetupstatic.com/photos/member/b/2/0/8/thumb_271605576.jpeg",
+      "url": "https://www.meetup.com/digital-east/members/239087267/"
+    },
+    "name": "Alex Moore",
+    "id": 27,
+    "friends": [
+      21,
+      7,
+      0,
+      15,
+      13,
+      22,
+      23,
+      17,
+      24,
+      6,
+      20,
+      10,
+      1,
+      5,
+      11,
+      3,
+      2,
+      25
+    ]
+  }
+}
