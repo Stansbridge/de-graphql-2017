@@ -1,0 +1,10 @@
+.fragment.current-visible.visible:not(.current-fragment) {
+    display: none !important;
+    height:0px;
+    line-height: 0px;
+    font-size: 0px;
+}
+
+pre code {
+  max-height: none !important;
+}

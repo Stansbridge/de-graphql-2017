@@ -12,6 +12,8 @@
   "license": "ISC",
   "dependencies": {
     "css-loader": "^0.28.7",
+    "highlight.js": "git+ssh://git@github.com/dpeek/highlight.js.git",
+    "prismjs": "^1.8.3",
     "style-loader": "^0.19.0",
     "url-loader": "^0.6.2",
     "webpack": "^3.8.1",

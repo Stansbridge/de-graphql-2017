@@ -1,6 +1,12 @@
+import 'prismjs';
+import 'prismjs/components/prism-graphql.js';
+import 'prismjs/components/prism-sql.js';
+import 'prismjs/themes/prism-twilight.css';
+
 import Reveal from '../reveal.js/js/reveal.js';
 window.Reveal = Reveal;
 import '../reveal.js/css/reveal.css';
 import '../reveal.js/css/theme/black.css';
-
 Reveal.initialize();
+
+import './style.css';
