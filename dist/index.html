@@ -44,13 +44,11 @@ type Person {
    profile: Profile
    friends: [Person]
 }
-
 # A Profile
 type Profile {
    url: String
    photo: String
 }
-
 type RootQueryType {
    attendees: [Person]
    person(
@@ -58,7 +56,6 @@ type RootQueryType {
        id: Int
    ): Person
 }
-
 schema {
    query: RootQueryType
 }
@@ -74,7 +71,8 @@ schema {
           </section>
           <section>
             <h3>Querying</h3>
-            <pre><code class="language-graphql">
+            <div class="code">
+            <pre style="width: 300px"><code class="language-graphql">
 type RootQueryType {
    attendees: [Person]
    person(
@@ -83,7 +81,7 @@ type RootQueryType {
    ): Person
 }
             </code></pre>
-            <pre><code class="language-graphql">
+            <pre style="width: 500px"><code class="language-graphql">
 query {
   attendees {
     id
@@ -110,7 +108,8 @@ query {
           </section>
           <section>
             <h3>Querying With Variables</h3>
-            <pre><code class="language-graphql">
+            <div class="code">
+            <pre style="width: 300px"><code class="language-graphql">
 type RootQueryType {
    attendees: [Person]
    person(
@@ -119,7 +118,7 @@ type RootQueryType {
    ): Person
 }
             </code></pre>
-            <pre><code class="language-graphql">
+            <pre style="width: 500px"><code class="language-graphql">
 query MyQueryName ($idVariable: Int) {
   person(id: $idVariable) {
     profile {
@@ -128,6 +127,7 @@ query MyQueryName ($idVariable: Int) {
   }
 }
             </code></pre>
+            </div>
             <aside class="notes">
               <ol>
                 <li><strong>Against the schema previous slide</strong></li>
@@ -137,7 +137,8 @@ query MyQueryName ($idVariable: Int) {
           </section>
           <section>
             <h3>Mutating and Subscribing</h3>
-            <pre><code class="language-graphql">
+            <div class="code">
+            <pre style="width: 300px"><code class="language-graphql">
 # Schema
 schema {
   query: RootQueryType
@@ -161,7 +162,7 @@ type PersonInput {
   name: String
 }
           </code></pre>
-            <pre><code class="language-graphql">
+            <pre style="width: 500px"><code class="language-graphql">
 
 # Query
 mutation UpdatePersonExample ($person: PersonInput, $id: Int) {
@@ -182,6 +183,7 @@ subscribe {
   }
 }
             </code></pre>
+            </div>
             <aside class="notes">
               <ol>
                 <li><strong>Input / Outputs</strong></li>
@@ -206,20 +208,11 @@ subscribe {
           </section>
           <section>
             <h3>Where Does It Go?</h3>
-            <div>
-              <ol class="fragment">
-                <li>Transport (HTTP)</li>
-                <li>GraphQL Resolver Runtime</li>
-                <li>Business Logic</li>
-                <li>Data Store</li>
-              </ol>
-              <ol class="fragment">
-                <li>Transport (HTTP)</li>
-                <li>GraphQL Resolver Runtime</li>
-                <li>API (REST/RPC/XML)</li>
-                <li>Business Logic</li>
-                <li>Data Store</li>
-              </ol>
+            <div class="fragment">
+              <p>Transport &rarr; GraphQL &rarr; Business Logic &rarr; Data Store</p>
+            </div>
+            <div class="fragment">
+              <p>Transport &rarr; GraphQL &rarr; (REST/RPC) &rarr; Business Logic &rarr; Data Store</p>
             </div>
             <aside class="notes">
               <ol>
@@ -230,32 +223,34 @@ subscribe {
           </section>
           <section>
             <h3>Reference implementations</h3>
-            <div>
-              <h4>Server Libraries</h4>
-              <ul>
-                <li>C# / .NET</li>
-                <li>Clojure</li>
-                <li>Elixir</li>
-                <li>Erlang</li>
-                <li>Go</li>
-                <li>Groovy</li>
-                <li>Java</li>
-                <li>JavaScript</li>
-                <li>PHP</li>
-                <li>Python</li>
-                <li>Scala</li>
-                <li>Ruby</li>
-              </ul>
-            </div>
-            <div>
-              <h4>Client Libraries</h4>
-              <ul>
-                <li>C# / .NET</li>
-                <li>Go</li>
-                <li>Java/Android</li>
-                <li>JavaScript</li>
-                <li>Swift / Objective-C IOS</li>
-              </ul>
+            <div class="code">
+              <div>
+                <h4>Server Libraries</h4>
+                <ul>
+                  <li>C# / .NET</li>
+                  <li>Clojure</li>
+                  <li>Elixir</li>
+                  <li>Erlang</li>
+                  <li>Go</li>
+                  <li>Groovy</li>
+                  <li>Java</li>
+                  <li>JavaScript</li>
+                  <li>PHP</li>
+                  <li>Python</li>
+                  <li>Scala</li>
+                  <li>Ruby</li>
+                </ul>
+               </div>
+              <div>
+                <h4>Client Libraries</h4>
+                <ul>
+                  <li>C# / .NET</li>
+                  <li>Go</li>
+                  <li>Java/Android</li>
+                  <li>JavaScript</li>
+                  <li>Swift / Objective-C IOS</li>
+                </ul>
+              </div>
             </div>
             <aside class="notes">
               <ol>
@@ -286,9 +281,19 @@ subscribe {
           </section>
           <section>
             <h3>Comparison with REST</h3>
-            <pre><code>
-GET /attendees
+            <div class="code">
+            <pre style="width: 300px"><code class="language-rubbish">
+/attendees
             </code></pre>
+              <pre style="width: 300px"><code class="language-graphql">
+query {
+  attendees {
+    id
+    name
+  }
+}
+              </code></pre>
+            </div>
             <pre><code class="language-json">
 [{
   "id": 1,
@@ -296,29 +301,14 @@ GET /attendees
   "profileId": 23
 }]
             </code></pre>
-            <pre><code class="language-graphql">
-query {
-  attendees {
-    id
-    name
-  }
-}
+          </section>
+          <section>
+            <h3>Comparisons...</h3>
+            <div class="code">
+            <pre style="width: 300px"><code class="language-rubbish">
+/attendees?photoSize=100x100
             </code></pre>
-            <pre><code>
-                  GET /attendees?photoSize=100x100
-            </code></pre>
-            <pre><code class="language-json">
-            [{
-              "id": 1,
-              "name": "Anthony",
-              "profileId": 23,
-              "profile": {
-                "url": "profile/23",
-                "photo": "data:image/jpeg;base64,SGVsbG8sIFdvcmxkIQ%3D%3D"
-              }
-            }]
-            </code></pre>
-            <pre><code class="language-graphql">
+            <pre style="width: 300px"><code class="language-graphql">
 query {
   attendees {
     id
@@ -330,16 +320,7 @@ query {
   }
 }
             </code></pre>
-
-            <pre><code>
-GET /attendees?photoSize=100x100&withFriends=1
-            </code></pre>
-            <pre><code>
-GET /friends/1
-            </code></pre>
-            <pre><code>
-                  GET /friends/1?photoSize=100x100
-            </code></pre>
+            </div>
             <pre><code class="language-json">
 [{
   "id": 1,
@@ -351,7 +332,22 @@ GET /friends/1
   }
 }]
             </code></pre>
-            <pre><code class="language-graphql">
+          </section>
+          <section>
+            <h3>Comparisons...</h3>
+            <div class="code">
+              <div style="width: 500px">
+                <pre style="display:block"><code class="language-rubbish">
+/attendees?photoSize=100x100&withFriends=1
+                </code></pre>
+                <pre style="display:block"><code class="language-rubbish">
+/friends/1
+                </code></pre>
+                <pre style="display:block"><code class="language-rubbish">
+/friends/1?photoSize=100x100
+                </code></pre>
+              </div>
+            <pre style="width: 300px"><code class="language-graphql">
 query {
   attendees {
     id
@@ -370,6 +366,18 @@ query {
     }
   }
 }
+            </code></pre>
+            </div>
+            <pre><code class="language-json">
+[{
+  "id": 1,
+  "name": "Anthony",
+  "profileId": 23,
+  "profile": {
+    "url": "profile/23",
+    "photo": "data:image/jpeg;base64,SGVsbG8sIFdvcmxkIQ%3D%3D"
+  }
+}]
             </code></pre>
             <aside class="notes">
             </aside>
