@@ -292,16 +292,21 @@ query {
   attendees {
     id
     name
+    profileId
   }
 }
               </code></pre>
             </div>
             <pre><code class="language-json">
-[{
-  "id": 1,
-  "name": "Anthony",
-  "profileId": 23
-}]
+[
+  ...,
+  {
+    "id": 1,
+    "name": "Anthony",
+    "profileId": 23
+  },
+  ...
+]
             </code></pre>
           </section>
           <section>
@@ -324,15 +329,19 @@ query {
             </code></pre>
             </div>
             <pre><code class="language-json">
-[{
-  "id": 1,
-  "name": "Anthony",
-  "profileId": 23,
-  "profile": {
-    "url": "profile/23",
-    "photo": "data:image/jpeg;base64,SGVsbG8sIFdvcmxkIQ%3D%3D"
-  }
-}]
+[
+  ...,
+  {
+    "id": 1,
+    "name": "Anthony",
+    "profileId": 23,
+    "profile": {
+      "url": "profile/23",
+      "photo": "data:image/jpeg;base64,SGVsbG8sIFdvcmxkIQ%3D%3D"
+    }
+  },
+  ...
+]
             </code></pre>
           </section>
           <section>
@@ -371,15 +380,19 @@ query {
             </code></pre>
             </div>
             <pre><code class="language-json">
-[{
-  "id": 1,
-  "name": "Anthony",
-  "profileId": 23,
-  "profile": {
-    "url": "profile/23",
-    "photo": "data:image/jpeg;base64,SGVsbG8sIFdvcmxkIQ%3D%3D"
-  }
-}]
+[
+  ...,
+  {
+    "id": 1,
+    "name": "Anthony",
+    "profileId": 23,
+    "profile": {
+      "url": "profile/23",
+      "photo": "data:image/jpeg;base64,SGVsbG8sIFdvcmxkIQ%3D%3D"
+    }
+  },
+  ...
+]
             </code></pre>
             <aside class="notes">
             </aside>
