@@ -21,6 +21,72 @@
         </section>
         <section>
           <section>
+            <h2>GraphQL in the stack</h2>
+            <p>
+              Not a database, a data resolver
+            </p>
+            <aside class="notes">
+              <ol>
+                <li><strong>NOT A DATABASE</strong></li>
+              </ol>
+            </aside>
+          </section>
+          <section>
+            <h3>Where Does It Go?</h3>
+            <div class="fragment">
+              <p>Transport &rarr; GraphQL &rarr; Business Logic &rarr; Data Store</p>
+            </div>
+            <div class="fragment">
+              <p>Transport &rarr; GraphQL &rarr; (REST/RPC) &rarr; Business Logic &rarr; Data Store</p>
+            </div>
+            <aside class="notes">
+              <ol>
+                <li><strong>After Transport</strong></li>
+                <li><strong>After Before Business Logic</strong></li>
+              </ol>
+            </aside>
+          </section>
+          <section>
+            <h3>Reference implementations</h3>
+            <div class="code">
+              <div>
+                <h4>Server Libraries</h4>
+                <ul>
+                  <li>C# / .NET</li>
+                  <li>Clojure</li>
+                  <li>Elixir</li>
+                  <li>Erlang</li>
+                  <li>Go</li>
+                  <li>Groovy</li>
+                  <li>Java</li>
+                  <li>JavaScript</li>
+                  <li>PHP</li>
+                  <li>Python</li>
+                  <li>Scala</li>
+                  <li>Ruby</li>
+                </ul>
+               </div>
+              <div>
+                <h4>Client Libraries</h4>
+                <ul>
+                  <li>C# / .NET</li>
+                  <li>Go</li>
+                  <li>Java/Android</li>
+                  <li>JavaScript</li>
+                  <li>Swift / Objective-C IOS</li>
+                </ul>
+              </div>
+            </div>
+            <aside class="notes">
+              <ol>
+                <li><strong>Defined as a specification</strong></li>
+                <li><strong>GraphQL-js, Youshido's GraphQL</strong></li>
+              </ol>
+            </aside>
+          </section>
+        </section>
+        <section>
+          <section>
             <h2>What is GraphQL?</h2>
             <ul>
               <li>A query language for your API</li>
@@ -190,72 +256,6 @@ subscribe {
                 <li><strong>Mutations have side-effects</strong></li>
                 <li><strong>Mutations describe what will change</strong></li>
                 <li><strong>Subscriptions</strong></li>
-              </ol>
-            </aside>
-          </section>
-        </section>
-        <section>
-          <section>
-            <h2>GraphQL in the stack</h2>
-            <p>
-              Not a database, a data resolver
-            </p>
-            <aside class="notes">
-              <ol>
-                <li><strong>NOT A DATABASE</strong></li>
-              </ol>
-            </aside>
-          </section>
-          <section>
-            <h3>Where Does It Go?</h3>
-            <div class="fragment">
-              <p>Transport &rarr; GraphQL &rarr; Business Logic &rarr; Data Store</p>
-            </div>
-            <div class="fragment">
-              <p>Transport &rarr; GraphQL &rarr; (REST/RPC) &rarr; Business Logic &rarr; Data Store</p>
-            </div>
-            <aside class="notes">
-              <ol>
-                <li><strong>After Transport</strong></li>
-                <li><strong>After Before Business Logic</strong></li>
-              </ol>
-            </aside>
-          </section>
-          <section>
-            <h3>Reference implementations</h3>
-            <div class="code">
-              <div>
-                <h4>Server Libraries</h4>
-                <ul>
-                  <li>C# / .NET</li>
-                  <li>Clojure</li>
-                  <li>Elixir</li>
-                  <li>Erlang</li>
-                  <li>Go</li>
-                  <li>Groovy</li>
-                  <li>Java</li>
-                  <li>JavaScript</li>
-                  <li>PHP</li>
-                  <li>Python</li>
-                  <li>Scala</li>
-                  <li>Ruby</li>
-                </ul>
-               </div>
-              <div>
-                <h4>Client Libraries</h4>
-                <ul>
-                  <li>C# / .NET</li>
-                  <li>Go</li>
-                  <li>Java/Android</li>
-                  <li>JavaScript</li>
-                  <li>Swift / Objective-C IOS</li>
-                </ul>
-              </div>
-            </div>
-            <aside class="notes">
-              <ol>
-                <li><strong>Defined as a specification</strong></li>
-                <li><strong>GraphQL-js, Youshido's GraphQL</strong></li>
               </ol>
             </aside>
           </section>
