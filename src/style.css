@@ -5,6 +5,7 @@ li {
 pre {
   font-size: 14px !important;
   display: inline-block !important;
+  max-height: auto !important;
 }
 
 .code {
