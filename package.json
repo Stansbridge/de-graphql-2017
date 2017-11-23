@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack",
-    "start": "webpack-dev-server --hot --inline"
+    "start": "webpack-dev-server --hot --inline",
+    "build-docs": "rm -rf docs/* && cp -r dist/* docs/ && DE_TALK_OUTPUT=./docs webpack"
   },
   "author": "",
   "license": "ISC",

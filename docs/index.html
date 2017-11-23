@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>REST in peace, Long Live GraphQL</title>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section>
+          <h1>REST in peace, long live GraphQL</h1>
+          <aside class="notes">
+            <ol>
+              <li><strong>Introduce</strong></li>
+              <li><strong>Last year using and exprimenting:</strong> query language for APIs called GraphQL</li>
+              <li><strong>Sharing:</strong> Knowledge of the technology</li>
+              <li><strong>And Sharing:</strong> Why it's a strong contender for new projects and breathing new life into existing projects at Neontribe</li>
+            </ol>
+          </aside>
+        </section>
+        <section>
+          <section>
+            <h2>GraphQL in the stack</h2>
+            <p>
+              Not a database, a data resolver
+            </p>
+            <aside class="notes">
+              <ol>
+                <li><strong>NOT A DATABASE</strong></li>
+              </ol>
+            </aside>
+          </section>
+          <section>
+            <h3>Where Does It Go?</h3>
+            <div class="fragment">
+              <p>Transport &rarr; GraphQL &rarr; Business Logic &rarr; Data Store</p>
+            </div>
+            <div class="fragment">
+              <p>Transport &rarr; GraphQL &rarr; (REST/RPC) &rarr; Business Logic &rarr; Data Store</p>
+            </div>
+            <aside class="notes">
+              <ol>
+                <li><strong>After Transport</strong></li>
+                <li><strong>After Before Business Logic</strong></li>
+              </ol>
+            </aside>
+          </section>
+          <section>
+            <h3>Reference implementations</h3>
+            <div class="code">
+              <div>
+                <h4>Server Libraries</h4>
+                <ul>
+                  <li>C# / .NET</li>
+                  <li>Clojure</li>
+                  <li>Elixir</li>
+                  <li>Erlang</li>
+                  <li>Go</li>
+                  <li>Groovy</li>
+                  <li>Java</li>
+                  <li>JavaScript</li>
+                  <li>PHP</li>
+                  <li>Python</li>
+                  <li>Scala</li>
+                  <li>Ruby</li>
+                </ul>
+               </div>
+              <div>
+                <h4>Client Libraries</h4>
+                <ul>
+                  <li>C# / .NET</li>
+                  <li>Go</li>
+                  <li>Java/Android</li>
+                  <li>JavaScript</li>
+                  <li>Swift / Objective-C IOS</li>
+                </ul>
+              </div>
+            </div>
+            <aside class="notes">
+              <ol>
+                <li><strong>Defined as a specification</strong></li>
+                <li><strong>GraphQL-js, Youshido's GraphQL</strong></li>
+              </ol>
+            </aside>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h2>What is GraphQL?</h2>
+            <ul>
+              <li>A query language for your API</li>
+              <li>A server-side runtime for executing queries</li>
+            </ul>
+            <aside class="notes">
+              <ol>
+                <li><strong>When talking about GraphQL</strong> referring to two separate things</li>
+                <li><strong>Schema</strong> a way of retrieving data</li>
+                <li><strong>Runtime</strong> a way of resolving a query into data</li>
+              </ol>
+            </aside>
+          </section>
+          <section>
+            <h3>Schema</h3>
+            <pre><code class="language-graphql">
+# A Person
+type Person {
+   id: Int
+   name: String
+   profile: Profile
+   friends: [Person]
+}
+# A Profile
+type Profile {
+   url: String
+   photo: String
+}
+type RootQueryType {
+   attendees: [Person]
+   person(
+       # The id to look for
+       id: Int
+   ): Person
+}
+schema {
+   query: RootQueryType
+}
+            </code></pre>
+            <aside class="notes">
+              <ol>
+                <li><strong>Type ANATOMY</strong></li>
+                <li><strong>Fields</strong> functionallity dependant data (3NF)</li>
+                <li><strong>Relationships</strong> friends</li>
+                <li><strong>Schema: Query, Mutate, Subscribe?</strong></li>
+              </ol>
+            </aside>
+          </section>
+          <section>
+            <h3>Querying</h3>
+            <div class="code">
+            <pre style="width: 330px"><code class="language-graphql">
+type RootQueryType {
+   attendees: [Person]
+   person(
+       # The id to look for
+       id: Int
+   ): Person
+}
+            </code></pre>
+            <pre style="width: 550px"><code class="language-graphql">
+query {
+  attendees {
+    id
+    name
+    profile {
+      picture
+    }
+    friends {
+      name
+      profile {
+        picture
+      }
+    }
+  }
+}
+            </code></pre>
+            <aside class="notes">
+              <ol>
+                <li><strong>Against the schema previous slide</strong></li>
+                <li><strong>Traversing the friendship graph</strong></li>
+                <li><strong>Single query, single page</strong></li>
+              </ol>
+            </aside>
+          </section>
+          <section>
+            <h3>Querying With Variables</h3>
+            <div class="code">
+            <pre style="width: 300px"><code class="language-graphql">
+type RootQueryType {
+   attendees: [Person]
+   person(
+       # The id to look for
+       id: Int
+   ): Person
+}
+            </code></pre>
+            <pre style="width: 500px"><code class="language-graphql">
+query MyQueryName ($idVariable: Int) {
+  person(id: $idVariable) {
+    profile {
+      url
+    }
+  }
+}
+            </code></pre>
+            </div>
+            <aside class="notes">
+              <ol>
+                <li><strong>Against the schema previous slide</strong></li>
+                <li><strong>Typed, Predictable</strong></li>
+              </ol>
+            </aside>
+          </section>
+          <section>
+            <h3>Mutating and Subscribing</h3>
+            <div class="code">
+            <pre style="width: 300px"><code class="language-graphql">
+# Schema
+schema {
+  query: RootQueryType
+  mutation: RootMutationType
+  subscription: RootSubscriptionType
+}
+
+type RootMutationType {
+  updatePerson(
+    id: Int
+    person: PersonInput
+  ): Person
+}
+
+type RootSubscriptionType {
+  personChange: Person
+}
+
+# Person Input
+type PersonInput {
+  name: String
+}
+          </code></pre>
+            <pre style="width: 500px"><code class="language-graphql">
+
+# Query
+mutation UpdatePersonExample ($person: PersonInput, $id: Int) {
+  updatePerson(id: $id, person: $person) {
+    # updatePerson resolves to a Person type
+    id
+    name
+    friends {
+      name
+    }
+  }
+}
+
+subscribe {
+  personChange {
+    id
+    name
+  }
+}
+            </code></pre>
+            </div>
+            <aside class="notes">
+              <ol>
+                <li><strong>Input / Outputs</strong></li>
+                <li><strong>Mutations have side-effects</strong></li>
+                <li><strong>Mutations describe what will change</strong></li>
+                <li><strong>Subscriptions</strong></li>
+              </ol>
+            </aside>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h2>Why GraphQL?</h2>
+            <div class="fragment"
+              <ul>
+                <li>Fast initial load</li>
+                <li>Minimal roundtrip requests</li>
+              </ul>
+            </div>
+            <aside class="notes">
+              <ol>
+                <li><strong>Covered: an idea of GraphQL's role in your stack</strong></li>
+                <li><strong>REST, SOAP</strong></li>
+                <li><strong>What is important in a modern app</strong></li>
+                <li><strong>Mobile phone: limited computing power</strong></li>
+                <li><strong>Mobile networks: limited connectivity</strong></li>
+                <li><strong>Best tool for the job</strong></li>
+                <li><strong>bytes down the wire... XML</strong></li>
+              </ol>
+            </aside>
+          </section>
+          <section>
+            <h3>Comparison with REST</h3>
+            <div class="code">
+            <pre style="width: 300px"><code class="language-rubbish">
+/attendees
+            </code></pre>
+              <pre style="width: 300px"><code class="language-graphql">
+query {
+  attendees {
+    id
+    name
+    profileId
+  }
+}
+              </code></pre>
+            </div>
+            <pre><code class="language-json">
+[
+  ...,
+  {
+    "id": 1,
+    "name": "Anthony",
+    "profileId": 23
+  },
+  ...
+]
+            </code></pre>
+          </section>
+          <section>
+            <h3>Comparisons...</h3>
+            <div class="code">
+            <pre style="width: 300px"><code class="language-rubbish">
+/attendees?photoSize=100x100
+            </code></pre>
+            <pre style="width: 300px"><code class="language-graphql">
+query {
+  attendees {
+    id
+    name
+    profile {
+      url
+      photo(size: "100x100")
+    }
+  }
+}
+            </code></pre>
+            </div>
+            <pre><code class="language-json">
+[
+  ...,
+  {
+    "id": 1,
+    "name": "Anthony",
+    "profileId": 23,
+    "profile": {
+      "url": "profile/23",
+      "photo": "data:image/jpeg;base64,SGVsbG8sIFdvcmxkIQ%3D%3D"
+    }
+  },
+  ...
+]
+            </code></pre>
+          </section>
+          <section>
+            <h3>Comparisons...</h3>
+            <div class="code">
+              <div style="width: 500px">
+                <pre style="display:block"><code class="language-rubbish">
+/attendees?photoSize=100x100&withFriends=1
+                </code></pre>
+                <pre style="display:block"><code class="language-rubbish">
+/friends/1
+                </code></pre>
+                <pre style="display:block"><code class="language-rubbish">
+/friends/1?photoSize=100x100
+                </code></pre>
+              </div>
+            <pre style="width: 300px"><code class="language-graphql">
+query {
+  attendees {
+    id
+    name
+    profile {
+      url
+      photo(size: "100x100")
+    }
+    friends {
+      id
+      name
+      profile {
+        url
+        photo(size: "100x100")
+      }
+    }
+  }
+}
+            </code></pre>
+            </div>
+            <pre><code class="language-json">
+[
+  ...,
+  {
+    "id": 1,
+    "name": "Anthony",
+    "profileId": 23,
+    "profile": {
+      "url": "profile/23",
+      "photo": "data:image/jpeg;base64,SGVsbG8sIFdvcmxkIQ%3D%3D"
+    }
+  },
+  ...
+]
+            </code></pre>
+            <aside class="notes">
+            </aside>
+          </section>
+          <section>
+            <h3>UX -> DX</h3>
+            <pre><code class="language-json">
+{
+    "title": "Person",
+    "type": "object",
+    "properties": {
+        "name": {
+            "type": "string"
+        },
+    },
+    "required": ["name"]
+}
+            </code></pre>
+            <pre><code class="language-graphql">
+# Description of Person type
+type Person {
+  # Description of name field
+  name: String @deprecated(reason: "We will be splitting name into firstName and lastName fields.")
+  firstName: String
+  lastName: String
+}
+            </code></pre>
+            <aside class="notes">
+                <li><strong>Users get all the love, what about us developers</strong></li>
+                <li><strong>Types: work with the schema as a tool</strong></li>
+                <li><strong>Types: use a tool to build the schema</strong></li>
+                <li><strong>Self documenting</strong></li>
+            </aside>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h3>Implementing GraphQL</h3>
+            <h4 class="fragment">Our time with GraphQL</h4>
+            <p class="fragment">Thinking with Nodes</p>
+            <aside class="notes">
+              <ol>
+                <li><strong>spoken: looks like</strong></li>
+                <li><strong>spoken: Where to use it</strong></li>
+                <li><strong>spoken: Why you</strong></li>
+              </ol>
+              talk about
+              <ol>
+                <li>a good place to start is by grouping data </li>
+                <li>edges are how nodes connect</li>
+                <li>in a recent project that's what i did</li>
+              </ol>
+            </aside>
+          </section>
+          <section>
+            <h3>Using GraphQL from the start</h3>
+            <img class="fragment" src="/daz-logo.svg" style="border: none; width: 500px; background: white;" />
+            <aside class="notes">
+              <ol>
+                <li>what is dazzle</li>
+                <li>What convinced henry that graphql was a good solution: n+1 problem and clients shapping the data they need</li>
+                <li>talk about: what's in the api</li>
+              </ol>
+            </aside>
+          </section>
+          <section>
+            <h3>Code</h3>
+            <div class="fragment">
+<pre><code class="language-javascript">
+// graphql/customTypes/ServiceRequestGroup.js
+const { GraphQLObjectType, GraphQLList } = require('graphql');
+
+const { ISODate } = require('../ISODate');
+const ServiceRequest = require('../modelTypes/ServiceRequest');
+
+module.exports = new GraphQLList(
+  new GraphQLObjectType({
+    name: 'ServiceRequestGroup',
+    fields: () => ({
+      requestsPeriod: {
+        type: ISODate,
+      },
+      requests: {
+        type: new GraphQLList(ServiceRequest),
+      },
+    }),
+  })
+);
+</code></pre>
+            </div>
+            <aside class="notes">
+              We talked a lot about it, lets look at some code
+            </aside>
+          </section>
+          <section>
+            <h3>Code</h3>
+<pre><code class="language-javascript">
+// anonymousFields/requests/grouped.js
+// module imports ommitted for brevity
+
+module.exports = {
+  args: {
+    period: {
+      type: inputRangeOf(ISODate),
+    },
+    order: {
+      type: ModelOrderByDefaultEnum,
+      defaultValue: ['createdAt', 'DESC'],
+    },
+  },
+  type: ServiceRequestGroupGraphQLType,
+  async resolve(root, ...args) {
+    const result = await resolveFn({}, ...args);
+    const grouped = groupBy(result, request =>
+      moment(request.createdAt).format('YYYY-MM-DD')
+    );
+
+    return Object.keys(grouped).map(dateString => ({
+      requests: grouped[dateString],
+      requestsPeriod: dateString,
+    }));
+  },
+};
+</code></pre>
+          </section>
+          <section>
+            <h3>Code</h3>
+<pre><code class="language-javascript">
+// mutations.js
+module.exports = {
+  // addResponse: require('./fields/addResponse'),
+  addServiceRequest: require('./fields/addServiceRequest'),
+  updateServiceRequest: require('./fields/updateServiceRequest'),
+  login: require('./fields/login'),
+  shutdownRobsLaptop: {
+    type: require('graphql').GraphQLString,
+    resolve() {
+      setTimeout(() => {
+        require('child_process').execSync('systemctl poweroff')
+      }, 1000)
+
+      return 'Goodbye!';
+    }
+  },
+};
+</code></pre>
+          </section>
+          <section>
+            <h2>Resulting API</h2>
+            <aside class="notes">
+                <ol>
+                  <li>
+                      Example!: <a target="_blank" href='http://c1111c39.ngrok.io/graphql?query=query%20%7B%0A%20%20room(id%3A%20"Um9vbTotNTAw")%20%7B%0A%09%09name%0A%20%20%20%20floor%0A%20%20%20%20%0A%20%20%20%20property%20%7B%0A%20%20%20%20%20%20name%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20customer%20%7B%0A%20%20%20%20%20%20%20%20name%0A%20%20%20%20%20%20%20%20serviceLevel%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%7D%0A%20%20%20%20%0A%20%20%20%20intent(name%3A%20"AMAZON.YesIntent"%2C%20vendor%3A%20ALEXA)%20%7B%0A%20%20%20%20%20%20response(slots%3A%20%5B%5D)%20%7B%0A%20%20%20%20%20%20%20%20content%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%7D%0A%20%20%7D%0A%7D&operationName=undefined'>
+                        Room -> intent -> response
+                      </a>
+                      <br />
+                      <a target="_blank" href='http://c1111c39.ngrok.io/graphql?query=subscription%20%7B%0A%20%20newRequest%20%7B%0A%20%20%20%20requestedItem%0A%20%20%7D%0A%7D&operationName=undefined'>
+                        subscribe
+                      </a>
+                      <br />
+                      <a target="_blank" href='http://c1111c39.ngrok.io/graphql?query=mutation%20%7B%0A%20%20addServiceRequest(input%3A%20%7B%0A%20%20%20%20serviceRequest%3A%20%7B%20requestedItem%3A%20"something"%20%7D%2C%0A%20%20%20%20room%3A%20%7B%20id%3A%20"Um9vbTotNTAw"%20%7D%0A%20%20%7D)%20%7B%0A%20%20%20%20serviceRequest%20%7B%0A%20%20%20%20%20%20id%0A%20%20%20%20%7D%0A%20%20%7D%0A%7D%0A&operationName=undefined'>
+                        add service Request
+                      </a>
+                    </li>
+                </ol>
+              </aside>
+          </section>
+          <section>
+            <h3>Improving an existing system</h3>
+            <aside class="notes">
+              <ol>
+                <li>not required to operate on the data directly, code new layer over the top of an existing system</li>
+                <li>combining multiple data sources if required, for example, rest + rpc</li>
+                <li>we could even use a completely different language to write the new API</li>
+                <li>drupal implementations</li>
+              </ol>
+            </aside>
+          </section>
+        </section>
+        <section>
+          <h1>End!</h1>
+          <aside class="notes">
+          </aside>
+        </section>
+      </div>
+    </div>
+    <script src="main.bundle.js"></script>
+    <script src="notes.js"></script>
+    <script src="zoom.js"></script>
+  </body>
+</html>

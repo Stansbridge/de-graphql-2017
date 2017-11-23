@@ -1,6 +1,8 @@
 var path = require('path');
 
-const output = path.resolve(__dirname, 'dist');
+const DE_TALK_OUTPUT = process.env.DE_TALK_OUTPUT;
+const output = DE_TALK_OUTPUT ? path.resolve(process.cwd(), DE_TALK_OUTPUT) : path.resolve(__dirname, 'dist');
+
 module.exports = {
   entry: './src/index.js',
   output: {
